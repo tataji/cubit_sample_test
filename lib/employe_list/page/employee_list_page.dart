@@ -1,12 +1,18 @@
+import 'package:cubit_sample/dio_client.dart';
 import 'package:cubit_sample/employe_list/cubit/employee_list_cubit.dart';
 import 'package:cubit_sample/employe_list/cubit/employee_list_page_state.dart';
+import 'package:cubit_sample/employe_list/repository/employee_api.dart';
+import 'package:cubit_sample/employe_list/repository/employee_list_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class EmployeeListPage extends StatefulWidget {
   final EmployeeListCubit cubit;
 
-  EmployeeListPage({super.key}) : cubit = EmployeeListCubit();
+
+  EmployeeListPage({super.key}) : cubit = EmployeeListCubit(employeeListRepository:
+  EmployeeListRepositoryImpl(EmployeeApi(DioClient().dio)));
 
   @override
   State<StatefulWidget> createState() {
@@ -44,5 +50,10 @@ class EmployeeListPageState extends State<EmployeeListPage> {
         body: Text("success"),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

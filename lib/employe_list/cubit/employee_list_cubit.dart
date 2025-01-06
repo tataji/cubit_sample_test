@@ -1,10 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../repository/employee_list_repository.dart';
 import 'employee_list_page_state.dart';
 
 class EmployeeListCubit extends Cubit<EmployeeListPageState> {
-  EmployeeListCubit() : super(EmployeeListPageInitState());
+  final EmployeeListRepository employeeListRepository;
 
-  void getListEmployee() {
+   EmployeeListCubit({required this.employeeListRepository}) : super(EmployeeListPageInitState());
+
+  void getListEmployee() async{
+    await employeeListRepository.getEmployeeList("path");
     emit(EmployeeListPageInitState());
   }
 }
