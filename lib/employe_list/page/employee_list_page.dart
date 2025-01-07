@@ -1,4 +1,4 @@
-import 'package:cubit_sample/dio_client.dart';
+import 'package:cubit_sample/network/dio_client.dart';
 import 'package:cubit_sample/employe_list/cubit/employee_list_cubit.dart';
 import 'package:cubit_sample/employe_list/cubit/employee_list_page_state.dart';
 import 'package:cubit_sample/employe_list/repository/employee_api.dart';
